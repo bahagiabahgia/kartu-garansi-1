@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cetak Kartu Garansi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="heading">Cetak Kartu Garansi</h1>
+
+    <div class="row">
+        <div class="col30">
+            
+        <form action="#" method="post">
+            <input type="hidden" name="id" id="id">
+
+            <label for="">Nama</label><br>
+            <input type="text" name="nama" id="nama" placeholder="Nama" required><br>
+
+            <label for="">Unit / Armada</label><br>
+            <select name="unit" id="unit" required>
+                <option value="indah">INDAH</option>
+                <option value="balong">BALONG</option>
+                <option value="mjk">MJK</option>
+                <option value="sumber">SUMBER</option>
+                <option value="indra">INDRA</option>
+                <option value="ciremai">CIREMAI</option>
+                <option value="freed">FREED</option>
+                <option value="inova">INOVA</option>
+                <option value="gmx">GMX</option>
+                <option value="calya">CALYA</option>
+                <option value="tayo">TAYO</option>
+            </select><br>
+            
+            <label for="">Frame</label><br>
+            <input type="text" name="frame" id="frame" placeholder="Frame" required><br>
+
+            <label for="">Lensa</label><br>
+            <input type="text" name="lensa" id="lensa" placeholder="Lensa" required><br>
+
+            <table>
+                <tr>
+                    <td>R</td>
+                    <td><input type="text" name="rsph" id="rsph" placeholder="Sph"></td>
+                    <td><input type="text" name="rcyl" id="rcyl" placeholder="Cyl"></td>
+                    <td><input type="text" name="raxis" id="raxis" placeholder="Axis"></td>
+                    <td><input type="text" name="radd" id="radd" placeholder="Add"></td>
+                    <td><input type="text" name="rmpd" id="rmpd" placeholder="Mpd"></td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td><input type="text" name="lsph" id="lsph" placeholder="Sph"></td>
+                    <td><input type="text" name="lcyl" id="lcyl" placeholder="Cyl"></td>
+                    <td><input type="text" name="laxis" id="laxis" placeholder="Axis"></td>
+                    <td><input type="text" name="ladd" id="ladd" placeholder="Add"></td>
+                    <td><input type="text" name="lmpd" id="lmpd" placeholder="Mpd"></td>
+                </tr>
+            </table>
+
+            <label for="">Garansi Lensa</label><br>
+            <select name="garansi_lensa" id="garansi_lensa" required>
+                <option value="-">Tanpa Garansi</option>
+                <option value="6 Bulan">6 Bulan</option>
+                <option value="1 Tahun">1 Tahun</option>
+                <option value="2 Tahun">2 Tahun</option>
+                <option value="3 Tahun">3 Tahun</option>
+            </select><br>
+
+            <label for="">Garansi Frame</label><br>
+            <select name="garansi_frame" id="garansi_frame" required>
+                <option value="-">Tanpa Garansi</option>
+                <option value="6 Bulan">6 Bulan</option>
+                <option value="1 Tahun">1 Tahun</option>
+                <option value="2 Tahun">2 Tahun</option>
+                <option value="3 Tahun">3 Tahun</option>
+            </select><br><br>
+
+            <button type="submit" class="button" onclick="save()">Simpan</button>
+        </form> 
+
+        </div>
+
+        <div class="col70">
+          <button onclick="removeAllData()">Hapus semua data</button>
+            <table id="customers">
+                <tr>
+                  <th>Tgl</th>
+                  <th>Nama</th>
+                  <th>Unit / Armada</th>
+                  <th>Frame</th>
+                  <th>Lensa</th>
+                  <th>Action</th>
+                </tr>
+                <tbody id="table">
+                 
+                </tr>
+              </table>
+              
+        </div>
+    </div>
+
+
+<script src="script.js"></script>
+<script>
+  allData();
+</script>
+</body>
+</html>

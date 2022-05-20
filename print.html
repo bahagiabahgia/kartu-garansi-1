@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cetak Kartu Garansi</title>
+	<style>
+		body{
+			padding:0;
+			margin: 0;
+		}
+		#dasar{
+			/*background: #ec6900;*/
+			background: white;
+			width: 8.66cm;
+			height: 5.27cm;
+			padding-top: 0.16cm;
+			margin-bottom: 0;
+		}
+		#data{
+			background:white;
+			width: 8.3cm;
+			height: 3.4cm;
+			margin:0 auto;
+			border-radius: 0.15cm;
+			font-family: Arial;
+			font-size: 10px;
+			padding-top: 1px;
+		}
+		#data table{
+			border-collapse: collapse;
+			margin:0 auto;
+			text-align: left;
+		}
+		#data #table2{
+			text-align: center;
+			margin-top: 3px;
+		}
+		#info{
+			font-family: square721 bt;
+			font-size: 8px;
+			padding:0.2cm;
+		}
+		td{
+			text-transform: uppercase;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="dasar">
+		<div id="data">
+			
+		</div>
+	</div>
+    
+	<script>
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString)
+        let id = urlParams.get('id')
+        contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+
+        contactList.forEach(function (value){
+            if(value.id == id){
+                document.getElementById('data').innerHTML += `
+                <table width="95%" id="table1">
+                    <tr>
+                        <th width="30%">Customer Name</th>
+                        <td>: ${value.nama}</td>
+                    </tr>
+                    <tr>
+                        <th width="30%">Type of Lens</th>
+                        <td>: ${value.lensa}</td>
+                    </tr>
+                    <tr>
+                        <th width="30%">Type of Frame</th>
+                        <td>: ${value.frame}</td>
+                    </tr>
+                </table>
+                <table width="90%" border="1" id="table2">
+                    <tr>
+                        <td></td>
+                        <td>Sph</td>
+                        <td>Cyl</td>
+                        <td>Axis</td>
+                        <td>Add</td>
+                        <td>Mpd</td>
+                        <td>Prism</td>
+                    </tr>
+                    <tr>
+                        <td>OD</td>
+                        <td>${value.rsph}</td>
+                        <td>${value.rcyl}</td>
+                        <td>${value.raxis}</td>
+                        <td>${value.radd}</td>
+                        <td>${value.rmpd}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>${value.lsph}</td>
+                        <td>${value.lcyl}</td>
+                        <td>${value.laxis}</td>
+                        <td>${value.ladd}</td>
+                        <td>${value.lmpd}</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table width="95%" id="table3">
+                    <tr>
+                        <th width="30%">Date of Issue</th>
+                        <td>: ${value.tanggal}</td>
+                        
+                    </tr>
+                    <tr>
+                        <th width="30%">Frame</th>
+                        <td>: ${value.garansi_frame}</td>
+                    </tr>
+                    <tr>
+                        <th width="30%">Lensa</th>
+                        <td>: ${value.garansi_lensa}</td>
+                    </tr>
+                </table>
+                `
+            }
+        })
+
+		window.print();
+	</script>
+</body>
+</html>
