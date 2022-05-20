@@ -146,23 +146,6 @@ Garansi Lensa : ${value.garansi_lensa}
 Garansi Frame : ${value.garansi_frame}  
 `)
 
-            // document.getElementById('id').value            = value.id
-            // document.getElementById('nama').value          = value.nama         
-            // document.getElementById('unit').value          = value.unit    
-            // document.getElementById('frame').value         = value.frame        
-            // document.getElementById('lensa').value         = value.lensa        
-            // document.getElementById('rsph').value          = value.rsph         
-            // document.getElementById('rcyl').value          = value.rcyl         
-            // document.getElementById('raxis').value         = value.raxis        
-            // document.getElementById('radd').value          = value.radd         
-            // document.getElementById('rmpd').value          = value.rmpd         
-            // document.getElementById('lsph').value          = value.lsph         
-            // document.getElementById('lcyl').value          = value.lcyl         
-            // document.getElementById('laxis').value         = value.laxis        
-            // document.getElementById('ladd').value          = value.ladd         
-            // document.getElementById('lmpd').value          = value.lmpd         
-            // document.getElementById('garansi_lensa').value = value.garansi_lensa
-            // document.getElementById('garansi_frame').value = value.garansi_frame
         }
     })
 }
