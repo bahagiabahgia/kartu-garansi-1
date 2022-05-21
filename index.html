@@ -43,19 +43,19 @@
             <table>
                 <tr>
                     <td>R</td>
-                    <td><input type="text" name="rsph" id="rsph" placeholder="Sph"></td>
-                    <td><input type="text" name="rcyl" id="rcyl" placeholder="Cyl"></td>
-                    <td><input type="text" name="raxis" id="raxis" placeholder="Axis"></td>
-                    <td><input type="text" name="radd" id="radd" placeholder="Add"></td>
-                    <td><input type="text" name="rmpd" id="rmpd" placeholder="Mpd"></td>
+                    <td><input type="number" name="rsph" id="rsph" placeholder="Sph"></td>
+                    <td><input type="number" name="rcyl" id="rcyl" placeholder="Cyl"></td>
+                    <td><input type="number" name="raxis" id="raxis" placeholder="Axis"></td>
+                    <td><input type="number" name="radd" id="radd" placeholder="Add"></td>
+                    <td><input type="number" name="rmpd" id="rmpd" placeholder="Mpd"></td>
                 </tr>
                 <tr>
                     <td>L</td>
-                    <td><input type="text" name="lsph" id="lsph" placeholder="Sph"></td>
-                    <td><input type="text" name="lcyl" id="lcyl" placeholder="Cyl"></td>
-                    <td><input type="text" name="laxis" id="laxis" placeholder="Axis"></td>
-                    <td><input type="text" name="ladd" id="ladd" placeholder="Add"></td>
-                    <td><input type="text" name="lmpd" id="lmpd" placeholder="Mpd"></td>
+                    <td><input type="number" name="lsph" id="lsph" placeholder="Sph"></td>
+                    <td><input type="number" name="lcyl" id="lcyl" placeholder="Cyl"></td>
+                    <td><input type="number" name="laxis" id="laxis" placeholder="Axis"></td>
+                    <td><input type="number" name="ladd" id="ladd" placeholder="Add"></td>
+                    <td><input type="number" name="lmpd" id="lmpd" placeholder="Mpd"></td>
                 </tr>
             </table>
 
@@ -83,19 +83,22 @@
         </div>
 
         <div class="col70">
-          <button onclick="removeAllData()">Hapus semua data</button>
-            <table id="customers">
-                <tr>
+            <div class="head">
+                <button style="float:left; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
+                <input type="text" style="float:right; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
+            </div>
+            <table id="customers" class="order-table table">
+                <thead>
                   <th>Tgl</th>
                   <th>Nama</th>
                   <th>Unit / Armada</th>
                   <th>Frame</th>
                   <th>Lensa</th>
                   <th>Action</th>
-                </tr>
+                </thead>
                 <tbody id="table">
                  
-                </tr>
+                </tbody>
               </table>
               
         </div>

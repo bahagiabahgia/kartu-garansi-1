@@ -34,7 +34,7 @@
     display: flex;
 }
 
-input[type=text] {
+form input[type=text], input[type=number] {
     width: 100%;
     padding: 8px 20px;
     margin: 8px 0;
@@ -42,7 +42,7 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-table input[type=text] {
+table input[type=number] {
     padding: 8px 5px;
 }
 
@@ -106,6 +106,7 @@ a {
     border-collapse: collapse;
     width: 100%;
     font-size: 14px;
+    margin-top: 10px;
   }
   
   #customers td, #customers th {
@@ -124,3 +125,33 @@ a {
     background-color: #7fa7f3;
     color: white;
   }
+
+.head input[type=text] {
+    padding: 8px 20px;
+    margin: 8px 0;
+    width: 400px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.head button{
+    background-color: #a0290e; /* Green */
+    border: none;
+    color: #f1f1f1;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.head button:hover{
+    background-color: #cf3b19;
+}
+
+.head::after{
+    display: table;
+    clear: both;
+}
