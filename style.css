@@ -37,9 +37,10 @@
 form input[type=text], input[type=number] {
     width: 100%;
     padding: 8px 20px;
-    margin: 8px 0;
+    margin: 5px 0;
     border-radius: 4px;
     box-sizing: border-box;
+    text-transform: uppercase;
 }
 
 table input[type=number] {
@@ -55,9 +56,7 @@ select {
 }
 
 .button {
-    background-color: #7fa7f3; /* Green */
     border: none;
-    color: #212957;
     padding: 10px 32px;
     text-align: center;
     text-decoration: none;
@@ -68,7 +67,17 @@ select {
     font-weight: bold;
 }
 
-.button:hover{
+.button-simpan{
+    background-color: #7fa7f3; /* Green */
+    color: #212957;
+}
+
+.button-reset{
+    background-color: rgb(182, 179, 179);
+    margin-top: 5px;
+}
+
+.button-simpan:hover{
     background: #698ed2;
 }
 
