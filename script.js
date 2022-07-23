@@ -3,15 +3,16 @@ function allData(){
     table.innerHTML = ``
     //get data from localstorage and store to contaclist array
     //we must to use JSON.parse, because data as string, we need convert to array
-    contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+    customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
 
     //looping data and show data in table
-    contactList.forEach(function (value, i){
-       
+    customersList.forEach(function (value, i){
+       i++;
         var table = document.getElementById('table')
 
         table.innerHTML += `
         <tr>
+            <td>${i++}</td>
             <td>${value.tanggal}</td>
             <td style="text-transform: uppercase">${value.nama}</td>
             <td style="text-transform: uppercase">${value.unit}</td>
@@ -27,24 +28,26 @@ function allData(){
     })
 }
 
+
 function save(){
-    //get data from localstorage and store to contaclist array
-    //we must to use JSON.parse, because data as string, we need convert to array
-    contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+    var nama = document.getElementById('nama').value
+    var frame = document.getElementById('frame').value
+    var lensa = document.getElementById('lensa').value
+    if(nama != "" || frame != "" || lensa != "" ){
+        //get data from localstorage and store to contaclist array
+        //we must to use JSON.parse, because data as string, we need convert to array
+        customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
 
-    //get last array to get last id
-    //and store it into variable id
-    var id
-    contactList.length != 0 ? contactList.findLast((item) => id = item.id) : id = 0
+        //get last array to get last id
+        //and store it into variable id
+        var id
+        customersList.length != 0 ? customersList.findLast((item) => id = item.id) : id = 0
 
-        var now = new Date().toLocaleDateString('id-ID', {year:"numeric", month:"short", day:"numeric"}) 
-        // "Friday, Jul 2, 2021"
-        //save
-        //get data from form
-        var nama = document.getElementById('nama').value
-        var frame = document.getElementById('frame').value
-        var lensa = document.getElementById('lensa').value
-        if(nama != "" || frame != "" || lensa != "" ){
+            var now = new Date().toLocaleDateString('id-ID', {year:"numeric", month:"short", day:"numeric"}) 
+            // "Friday, Jul 2, 2021"
+            //save
+            //get data from form
+        
             var item = {
                 id             : id + 1, 
                 nama           : document.getElementById('nama').value, 
@@ -65,23 +68,26 @@ function save(){
                 garansi_frame  : document.getElementById('garansi_frame').value,
                 tanggal        : now
             }
+        
+
+            //add item data to array customersList
+            customersList.push(item)
+
+        // save array into localstorage
+        localStorage.setItem('listItem', JSON.stringify(customersList))
+
+        if(document.getElementById('id').value){
+            remove(document.getElementById('id').value)
         }
 
-        //add item data to array contactlist
-        contactList.push(item)
+        //update table list
+        allData()
 
-    // save array into localstorage
-    localStorage.setItem('listItem', JSON.stringify(contactList))
-
-    if(document.getElementById('id').value){
-        remove(document.getElementById('id').value)
+        //remove form data
+        document.getElementById('form').reset()
+    }else{
+        alert("Form Tidak Boleh kosong");
     }
-
-    //update table list
-    allData()
-
-    //remove form data
-    document.getElementById('form').reset()
 }
 
 function removeAllData(){
@@ -90,9 +96,9 @@ function removeAllData(){
 }
 
 function find(id){
-    contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+    customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
 
-    contactList.forEach(function (value){
+    customersList.forEach(function (value){
         if(value.id == id){
             document.getElementById('id').value            = value.id
             document.getElementById('nama').value          = value.nama         
@@ -116,23 +122,23 @@ function find(id){
 }
 
 function remove(id){
-    contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+    customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
     
-        contactList = contactList.filter(function(value){ 
+        customersList = customersList.filter(function(value){ 
             return value.id != id; 
         });
     
         // save array into localstorage
-        localStorage.setItem('listItem', JSON.stringify(contactList))
+        localStorage.setItem('listItem', JSON.stringify(customersList))
     
         //get data again
         allData()
 }
 
 function info(id){
-    contactList = JSON.parse(localStorage.getItem('listItem')) ?? []
+    customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
 
-    contactList.forEach(function (value){
+    customersList.forEach(function (value){
         if(value.id == id){
 
 alert(`Nama   : ${value.nama}
@@ -196,3 +202,47 @@ var TableFilter = (function() {
   
  TableFilter.init(); 
 })();
+
+cPrev = -1; // global var saves the previous c, used to
+            // determine if the same column is clicked again
+
+function sortBy(c) {
+    rows = document.getElementById("customers").rows.length; // num of rows
+    columns = document.getElementById("customers").rows[0].cells.length; // num of columns
+    arrTable = [...Array(rows)].map(e => Array(columns)); // create an empty 2d array
+
+    for (ro=0; ro<rows; ro++) { // cycle through rows
+        for (co=0; co<columns; co++) { // cycle through columns
+            // assign the value in each row-column to a 2d array by row-column
+            arrTable[ro][co] = document.getElementById("customers").rows[ro].cells[co].innerHTML;
+        }
+    }
+
+    th = arrTable.shift(); // remove the header row from the array, and save it
+    
+    if (c !== cPrev) { // different column is clicked, so sort by the new column
+        arrTable.sort(
+            function (a, b) {
+                if (a[c] === b[c]) {
+                    return 0;
+                } else {
+                    return (a[c] < b[c]) ? -1 : 1;
+                }
+            }
+        );
+    } else { // if the same column is clicked then reverse the array
+        arrTable.reverse();
+    }
+    
+    cPrev = c; // save in previous c
+
+    arrTable.unshift(th); // put the header back in to the array
+
+    // cycle through rows-columns placing values from the array back into the html table
+    for (ro=0; ro<rows; ro++) {
+        for (co=0; co<columns; co++) {
+            document.getElementById("customers").rows[ro].cells[co].innerHTML = arrTable[ro][co];
+        }
+    }
+}
+

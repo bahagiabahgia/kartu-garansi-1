@@ -11,7 +11,7 @@
     <h2 class="heading">Cetak Kartu Garansi</h1>
 
     <div class="row">
-        <div class="col30">
+        <div class="left">
             
         <form action="#" method="post" id="form">
             <input type="hidden" name="id" id="id">
@@ -83,18 +83,21 @@
 
         </div>
 
+        <div class="col30"></div>
+
         <div class="col70">
             <div class="head">
-                <button style="float:left; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
-                <input type="text" style="float:right; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
+                <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
+                <button style="float:right; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
             </div>
             <table id="customers" class="order-table table">
                 <thead>
-                  <th>Tgl</th>
-                  <th>Nama</th>
-                  <th>Unit / Armada</th>
-                  <th>Frame</th>
-                  <th>Lensa</th>
+                  <th onclick="sortBy(0)">No</th>
+                  <th onclick="sortBy(1)">Tanggal</th>
+                  <th onclick="sortBy(2)">Nama</th>
+                  <th onclick="sortBy(3)">Unit / Armada</th>
+                  <th onclick="sortBy(4)">Frame</th>
+                  <th onclick="sortBy(5)">Lensa</th>
                   <th>Action</th>
                 </thead>
                 <tbody id="table">
@@ -105,10 +108,9 @@
         </div>
     </div>
 
-
 <script src="script.js"></script>
 <script>
-  allData();
+    allData();
 </script>
 </body>
 </html>
