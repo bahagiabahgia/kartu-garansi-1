@@ -21,7 +21,7 @@ function allData(){
             <td>
             <a href="javascript:void(0)" id="i" onclick="info(${value.id})">i</a>
             <a href="javascript:void(1)" id="edit" onclick="find(${value.id})">Edit</a>
-            <a href="javascript:void(2)" id="hapus" onclick="remove(${value.id})">Hapus</a>
+            <a href="javascript:void(2)" id="hapus" onclick="return confirm('Data akan dihapus!')?remove(${value.id}):'';">Hapus</a>
             <a href="print.html?id=${value.id}" id="print" target="_blank">Print</a>
             </td>
         </tr>`
@@ -43,7 +43,7 @@ function save(){
         var id
         customersList.length != 0 ? customersList.findLast((item) => id = item.id) : id = 0
 
-            var now = new Date().toLocaleDateString('id-ID', {year:"numeric", month:"short", day:"numeric"}) 
+            var now = new Date().toLocaleDateString('id-ID', {year:"numeric", month:"numeric", day:"numeric"}) 
             // "Friday, Jul 2, 2021"
             //save
             //get data from form

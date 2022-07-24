@@ -48,6 +48,11 @@
     display: flex;
 }
 
+input[type=date]{
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
 form input[type=text], input[type=number] {
     width: 100%;
     padding: 8px 20px;

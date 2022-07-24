@@ -90,6 +90,7 @@
                 <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
                 <button style="float:right; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
                 <button style="float:right; margin: 10px; background-color: rgb(93, 156, 212);" id="export_button">Export</button>
+                <input style="float:right; margin: 10px;" id="dates" type="date">
             </div>
             <table id="customers" class="order-table table">
                 <thead>
@@ -117,6 +118,9 @@
     export_button.addEventListener('click', () =>  {
         window.open("export.html", "_blank");
     });
+    var now = new Date().toLocaleDateString('en-CA');
+    document.getElementById("dates").value=now;
+    // alert(now);
 </script>
 </body>
 </html>
