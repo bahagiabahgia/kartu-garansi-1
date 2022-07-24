@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Data</title>
+</head>
+<body>
+    <table id="customers" class="order-table table">
+        <tr>
+          <th rowspan="2">Tanggal</th>
+          <th rowspan="2">Nama</th>
+          <th rowspan="2">Unit / Armada</th>
+          <th rowspan="2">Frame</th>
+          <th rowspan="2">Lensa</th>
+          <th colspan="5">Ukuran</th>
+        </tr>
+        <tr>
+            <th>Sph</th>
+            <th>Cyl</th>
+            <th>Axis</th>
+            <th>Add</th>
+            <th>Mpd</th>
+        </tr>
+        <tbody id="table">
+         
+        </tbody>
+      </table>
+      <script>
+        function exportData(){
+            
+            table.innerHTML = ``
+            //get data from localstorage and store to contaclist array
+            //we must to use JSON.parse, because data as string, we need convert to array
+            customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
+        
+            //looping data and show data in table
+            customersList.forEach(function (value, i){
+            
+                var table = document.getElementById('table')
+        
+                table.innerHTML += `
+                <tr>
+                    <td rowspan='2'>${value.tanggal}</td>
+                    <td rowspan='2' style="text-transform: uppercase; text-weight:bold;">${value.nama}</td>
+                    <td rowspan='2' style="text-transform: uppercase">${value.unit}</td>
+                    <td rowspan='2' style="text-transform: uppercase">${value.frame}</td>
+                    <td rowspan='2' style="text-transform: uppercase">${value.lensa}</td>
+                    <td> R : ${value.rsph}</td>
+                    <td>${value.rcyl}</td>
+                    <td>${value.raxis}</td>
+                    <td>${value.radd}</td>
+                    <td>${value.rmpd}</td>
+                </tr>
+                <tr>
+                    <td> L : ${value.lsph}</td>
+                    <td>${value.lcyl}</td>
+                    <td>${value.laxis}</td>
+                    <td>${value.ladd}</td>
+                    <td>${value.lmpd}</td>
+                </tr>`
+            })
+        }
+          exportData();
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+          function html_table_to_excel(type)
+          {
+              var data = document.getElementById('customers');
+      
+              var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
+      
+              XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
+      
+              XLSX.writeFile(file, 'file.' + type);
+          }
+      
+
+              html_table_to_excel('xlsx');
+
+              window.close();
+      </script>
+</body>
+</html>

@@ -87,8 +87,9 @@
 
         <div class="col70">
             <div class="head">
-                <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
+                <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />\
                 <button style="float:right; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
+                <button style="float:right; margin: 10px; background-color: rgb(93, 156, 212);" id="export_button">Export</button>
             </div>
             <table id="customers" class="order-table table">
                 <thead>
@@ -111,6 +112,11 @@
 <script src="script.js"></script>
 <script>
     allData();
+    const export_button = document.getElementById('export_button');
+      
+    export_button.addEventListener('click', () =>  {
+        window.open("export.html", "_blank");
+    });
 </script>
 </body>
 </html>
