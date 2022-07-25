@@ -90,7 +90,12 @@
                 <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
                 <button style="float:right; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
                 <button style="float:right; margin: 10px; background-color: rgb(93, 156, 212);" id="export_button">Export</button>
-                <input style="float:right; margin: 10px;" id="dates" type="date">
+            </div>
+            <div style="clear:both"></div>
+            <div id="panel">
+                <h3>Pilih Tanggal</h3>
+                <input style="margin: 10px;" id="dates" type="date"><br>
+                <button style="background-color: rgb(62, 221, 113);" id="download_button" onclick="download('iuyi')">Download</button>
             </div>
             <table id="customers" class="order-table table">
                 <thead>
@@ -114,12 +119,26 @@
 <script>
     allData();
     const export_button = document.getElementById('export_button');
-      
-    export_button.addEventListener('click', () =>  {
-        window.open("export.html", "_blank");
-    });
     var now = new Date().toLocaleDateString('en-CA');
     document.getElementById("dates").value=now;
+
+    export_button.addEventListener('click', () =>  {
+        // this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = document.getElementById("panel");
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+    
+    function download(tgl){
+        window.open("export.html?tgl="+tgl, "_blank");
+    }
+    
+
     // alert(now);
 </script>
 </body>

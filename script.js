@@ -7,7 +7,7 @@ function allData(){
 
     //looping data and show data in table
     customersList.forEach(function (value, i){
-       i++;
+       i++;        
         var table = document.getElementById('table')
 
         table.innerHTML += `

@@ -183,3 +183,23 @@ a {
     display: table;
     clear: both;
 }
+
+#download_button{
+    border: none;
+    color: #f1f1f1;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    text-align: center;
+}
