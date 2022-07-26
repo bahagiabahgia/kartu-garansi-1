@@ -13,6 +13,7 @@ function allData(){
         table.innerHTML += `
         <tr>
             <td>${i++}</td>
+            <td>${value.noprecal}</td>
             <td>${value.tanggal}</td>
             <td style="text-transform: uppercase">${value.nama}</td>
             <td style="text-transform: uppercase">${value.unit}</td>
@@ -50,6 +51,7 @@ function save(){
         
             var item = {
                 id             : id + 1, 
+                noprecal       : document.getElementById('noprecal').value,
                 nama           : document.getElementById('nama').value, 
                 unit           : document.getElementById('unit').value, 
                 frame          : document.getElementById('frame').value, 
@@ -101,6 +103,7 @@ function find(id){
     customersList.forEach(function (value){
         if(value.id == id){
             document.getElementById('id').value            = value.id
+            document.getElementById('noprecal').value            = value.noprecal
             document.getElementById('nama').value          = value.nama         
             document.getElementById('unit').value          = value.unit    
             document.getElementById('frame').value         = value.frame        

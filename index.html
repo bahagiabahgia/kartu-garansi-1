@@ -16,22 +16,29 @@
         <form action="#" method="post" id="form">
             <input type="hidden" name="id" id="id">
 
+            <label for="">No Precal</label><br>
+            <input type="text" name="noprecal" id="noprecal" placeholder="No Precal"required><br>
+
             <label for="">Nama</label><br>
             <input type="text" name="nama" id="nama" placeholder="Nama" required><br>
 
             <label for="">Unit / Armada</label><br>
             <select name="unit" id="unit" required>
-                <option value="indah">INDAH</option>
-                <option value="balong">BALONG</option>
-                <option value="mjk">MJK</option>
-                <option value="sumber">SUMBER</option>
-                <option value="indra">INDRA</option>
-                <option value="ciremai">CIREMAI</option>
-                <option value="freed">FREED</option>
-                <option value="inova">INOVA</option>
-                <option value="gmx">GMX</option>
-                <option value="calya">CALYA</option>
-                <option value="tayo">TAYO</option>
+                <option value="INDAH">INDAH</option>
+                <option value="BALONG">BALONG</option>
+                <option value="MJK">MJK</option>
+                <option value="SUMBER">SUMBER</option>
+                <option value="INDRA">INDRA</option>
+                <option value="CIREMAI">CIREMAI</option>
+                <option value="FREED">FREED</option>
+                <option value="INOVA">INOVA</option>
+                <option value="GMX">GMX</option>
+                <option value="CALYA">CALYA</option>
+                <option value="TAYO">TAYO</option>
+                <option value="SINDANG">SINDANG</option>
+                <option value="WALED">WALED</option>
+                <option value="AWN">AWN</option>
+                <option value="SIGRA">SIGRA</option>
             </select><br>
             
             <label for="">Frame</label><br>
@@ -100,6 +107,7 @@
             <table id="customers" class="order-table table">
                 <thead>
                   <th onclick="sortBy(0)">No</th>
+                  <th>No Precal</th>
                   <th onclick="sortBy(1)">Tanggal</th>
                   <th onclick="sortBy(2)">Nama</th>
                   <th onclick="sortBy(3)">Unit / Armada</th>
