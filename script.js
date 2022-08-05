@@ -13,7 +13,6 @@ function allData(){
         table.innerHTML += `
         <tr>
             <td>${i++}</td>
-            <td>${value.noprecal}</td>
             <td>${value.tanggal}</td>
             <td style="text-transform: uppercase">${value.nama}</td>
             <td style="text-transform: uppercase">${value.unit}</td>
@@ -51,7 +50,6 @@ function save(){
         
             var item = {
                 id             : id + 1, 
-                noprecal       : document.getElementById('noprecal').value,
                 nama           : document.getElementById('nama').value, 
                 unit           : document.getElementById('unit').value, 
                 frame          : document.getElementById('frame').value, 
@@ -103,7 +101,6 @@ function find(id){
     customersList.forEach(function (value){
         if(value.id == id){
             document.getElementById('id').value            = value.id
-            document.getElementById('noprecal').value            = value.noprecal
             document.getElementById('nama').value          = value.nama         
             document.getElementById('unit').value          = value.unit    
             document.getElementById('frame').value         = value.frame        
@@ -157,95 +154,5 @@ Garansi Frame : ${value.garansi_frame}
 
         }
     })
-}
-
-(function() {
-	'use strict';
-
-var TableFilter = (function() {
- var Arr = Array.prototype;
-		var input;
-  
-		function onInputEvent(e) {
-			input = e.target;
-			var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
-			Arr.forEach.call(table1, function(table) {
-				Arr.forEach.call(table.tBodies, function(tbody) {
-					Arr.forEach.call(tbody.rows, filter);
-				});
-			});
-		}
-
-		function filter(row) {
-			var text = row.textContent.toLowerCase();
-       //console.log(text);
-      var val = input.value.toLowerCase();
-      //console.log(val);
-			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-		}
-
-		return {
-			init: function() {
-				var inputs = document.getElementsByClassName('table-filter');
-				Arr.forEach.call(inputs, function(input) {
-					input.oninput = onInputEvent;
-				});
-			}
-		};
- 
-	})();
-
-  /*console.log(document.readyState);
-	document.addEventListener('readystatechange', function() {
-		if (document.readyState === 'complete') {
-      console.log(document.readyState);
-			TableFilter.init();
-		}
-	}); */
-  
- TableFilter.init(); 
-})();
-
-cPrev = -1; // global var saves the previous c, used to
-            // determine if the same column is clicked again
-
-function sortBy(c) {
-    rows = document.getElementById("customers").rows.length; // num of rows
-    columns = document.getElementById("customers").rows[0].cells.length; // num of columns
-    arrTable = [...Array(rows)].map(e => Array(columns)); // create an empty 2d array
-
-    for (ro=0; ro<rows; ro++) { // cycle through rows
-        for (co=0; co<columns; co++) { // cycle through columns
-            // assign the value in each row-column to a 2d array by row-column
-            arrTable[ro][co] = document.getElementById("customers").rows[ro].cells[co].innerHTML;
-        }
-    }
-
-    th = arrTable.shift(); // remove the header row from the array, and save it
-    
-    if (c !== cPrev) { // different column is clicked, so sort by the new column
-        arrTable.sort(
-            function (a, b) {
-                if (a[c] === b[c]) {
-                    return 0;
-                } else {
-                    return (a[c] < b[c]) ? -1 : 1;
-                }
-            }
-        );
-    } else { // if the same column is clicked then reverse the array
-        arrTable.reverse();
-    }
-    
-    cPrev = c; // save in previous c
-
-    arrTable.unshift(th); // put the header back in to the array
-
-    // cycle through rows-columns placing values from the array back into the html table
-    for (ro=0; ro<rows; ro++) {
-        for (co=0; co<columns; co++) {
-            document.getElementById("customers").rows[ro].cells[co].innerHTML = arrTable[ro][co];
-        }
-    }
 }
 

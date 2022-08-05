@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak Kartu Garansi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+ 
+
 </head>
 <body>
     <h2 class="heading">Cetak Kartu Garansi</h1>
@@ -15,9 +18,6 @@
             
         <form action="#" method="post" id="form">
             <input type="hidden" name="id" id="id">
-
-            <label for="">No Precal</label><br>
-            <input type="text" name="noprecal" id="noprecal" placeholder="No Precal"required><br>
 
             <label for="">Nama</label><br>
             <input type="text" name="nama" id="nama" placeholder="Nama" required><br>
@@ -94,25 +94,16 @@
 
         <div class="col70">
             <div class="head">
-                <input type="text" style="float:left; margin: 10px;" class="table-filter" data-table="order-table" placeholder="Cari..." />
                 <button style="float:right; margin: 10px;" onclick="removeAllData()">Hapus semua data</button>
-                <button style="float:right; margin: 10px; background-color: rgb(93, 156, 212);" id="export_button">Export</button>
-            </div>
-            <div style="clear:both"></div>
-            <div id="panel">
-                <h3>Pilih Tanggal</h3>
-                <input style="margin: 10px;" id="dates" type="date"><br>
-                <button style="background-color: rgb(62, 221, 113);" id="download_button" onclick="download('iuyi')">Download</button>
             </div>
             <table id="customers" class="order-table table">
                 <thead>
-                  <th onclick="sortBy(0)">No</th>
-                  <th>No Precal</th>
-                  <th onclick="sortBy(1)">Tanggal</th>
-                  <th onclick="sortBy(2)">Nama</th>
-                  <th onclick="sortBy(3)">Unit / Armada</th>
-                  <th onclick="sortBy(4)">Frame</th>
-                  <th onclick="sortBy(5)">Lensa</th>
+                  <th>No</th>
+                  <th>Tanggal</th>
+                  <th>Nama</th>
+                  <th>Unit / Armada</th>
+                  <th>Frame</th>
+                  <th>Lensa</th>
                   <th>Action</th>
                 </thead>
                 <tbody id="table">
@@ -122,9 +113,13 @@
               
         </div>
     </div>
-
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script src="script.js"></script>
 <script>
+$(document).ready( function () {
+    $('#customers').DataTable();
+} );
     allData();
     const export_button = document.getElementById('export_button');
     var now = new Date().toLocaleDateString('en-CA');

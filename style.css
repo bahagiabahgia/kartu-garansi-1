@@ -66,6 +66,10 @@ table input[type=number] {
     padding: 8px 5px;
 }
 
+table td{
+    font-size: 12px;
+}
+
 select {
     width: 100%;
     padding: 8px 20px;
@@ -103,11 +107,11 @@ select {
 a {
     border: none;
     color: white;
-    padding: 5px 8px;
+    padding: 5px 5px;
     text-align: center;
     text-decoration: none;
     display: inline;
-    font-size: 14px;
+    font-size: 12x;
     border-radius: 4px;
     width: 100%;
     font-weight: bold;
