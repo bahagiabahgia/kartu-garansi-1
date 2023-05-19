@@ -7,7 +7,14 @@
     <title>Cetak Kartu Garansi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
- 
+    <style>
+        tr td:nth-child(6){
+            max-width: 130px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
 
 </head>
 <body>
@@ -50,19 +57,19 @@
             <table>
                 <tr>
                     <td>R</td>
-                    <td><input type="number" name="rsph" id="rsph" placeholder="Sph"></td>
-                    <td><input type="number" name="rcyl" id="rcyl" placeholder="Cyl"></td>
-                    <td><input type="number" name="raxis" id="raxis" placeholder="Axis"></td>
-                    <td><input type="number" name="radd" id="radd" placeholder="Add"></td>
-                    <td><input type="number" name="rmpd" id="rmpd" placeholder="Mpd"></td>
+                    <td><input type="text" name="rsph" id="rsph" placeholder="Sph"></td>
+                    <td><input type="text" name="rcyl" id="rcyl" placeholder="Cyl"></td>
+                    <td><input type="text" name="raxis" id="raxis" placeholder="Axis"></td>
+                    <td><input type="text" name="radd" id="radd" placeholder="Add"></td>
+                    <td><input type="text" name="rmpd" id="rmpd" placeholder="Mpd"></td>
                 </tr>
                 <tr>
                     <td>L</td>
-                    <td><input type="number" name="lsph" id="lsph" placeholder="Sph"></td>
-                    <td><input type="number" name="lcyl" id="lcyl" placeholder="Cyl"></td>
-                    <td><input type="number" name="laxis" id="laxis" placeholder="Axis"></td>
-                    <td><input type="number" name="ladd" id="ladd" placeholder="Add"></td>
-                    <td><input type="number" name="lmpd" id="lmpd" placeholder="Mpd"></td>
+                    <td><input type="text" name="lsph" id="lsph" placeholder="Sph"></td>
+                    <td><input type="text" name="lcyl" id="lcyl" placeholder="Cyl"></td>
+                    <td><input type="text" name="laxis" id="laxis" placeholder="Axis"></td>
+                    <td><input type="text" name="ladd" id="ladd" placeholder="Add"></td>
+                    <td><input type="text" name="lmpd" id="lmpd" placeholder="Mpd"></td>
                 </tr>
             </table>
 
@@ -117,29 +124,22 @@
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script src="script.js"></script>
 <script>
-$(document).ready( function () {
-    $('#customers').DataTable();
-} );
+
     allData();
-    const export_button = document.getElementById('export_button');
-    var now = new Date().toLocaleDateString('en-CA');
-    document.getElementById("dates").value=now;
 
-    export_button.addEventListener('click', () =>  {
-        // this.classList.toggle("active");
+    $(document).ready( function () {
+        $('#customers').DataTable({
+            
+            "columnDefs": [
+                { "type": "html-num", "targets": 0 }
+            ],
+            order: [[0, 'desc']]
+        });
+    } );
 
-        /* Toggle between hiding and showing the active panel */
-        var panel = document.getElementById("panel");
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
     
-    function download(tgl){
-        window.open("export.html?tgl="+tgl, "_blank");
-    }
+
+    
     
 
     // alert(now);

@@ -81,7 +81,8 @@ function save(){
         }
 
         //update table list
-        allData()
+        // allData()
+        location.reload();
 
         //remove form data
         document.getElementById('form').reset()
