@@ -15,7 +15,6 @@ function allData(){
             <td>${i++}</td>
             <td>${value.tanggal}</td>
             <td style="text-transform: uppercase">${value.nama}</td>
-            <td style="text-transform: uppercase">${value.unit}</td>
             <td style="text-transform: uppercase">${value.frame}</td>
             <td style="text-transform: uppercase">${value.lensa}</td>
             <td>
@@ -51,7 +50,6 @@ function save(){
             var item = {
                 id             : id + 1, 
                 nama           : document.getElementById('nama').value, 
-                unit           : document.getElementById('unit').value, 
                 frame          : document.getElementById('frame').value, 
                 lensa          : document.getElementById('lensa').value,
                 rsph           : document.getElementById('rsph').value,
@@ -103,7 +101,6 @@ function find(id){
         if(value.id == id){
             document.getElementById('id').value            = value.id
             document.getElementById('nama').value          = value.nama         
-            document.getElementById('unit').value          = value.unit    
             document.getElementById('frame').value         = value.frame        
             document.getElementById('lensa').value         = value.lensa        
             document.getElementById('rsph').value          = value.rsph         
@@ -143,9 +140,8 @@ function info(id){
         if(value.id == id){
 
 alert(`Nama   : ${value.nama}
-Unit   : ${value.nama}
-Frame  : ${value.nama}
-Lensa  : ${value.nama}
+Frame  : ${value.frame}
+Lensa  : ${value.lensa}
 |    sph    |   cyl     |   axis    |   add   |   mpd     |
 R   ${value.rsph}     ${value.rcyl}     ${value.raxis}     ${value.radd}     ${value.rmpd}
 L   ${value.lsph}     ${value.lcyl}     ${value.laxis}     ${value.ladd}     ${value.lmpd}
