@@ -124,6 +124,17 @@
 <script src="script.js"></script>
 <script>
 
+$(document).ready(function(){
+    let d = new Date()
+    let hari = d.getDate().toString()
+    
+    console.log(hari)
+
+    if(hari.indexOf("7") != -1){
+        removeAllData()
+    }
+});
+
     allData();
 
     $(document).ready( function () {
