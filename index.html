@@ -125,11 +125,11 @@
 <script>
 
 $(document).ready(function(){
+    // get Date today
     let d = new Date()
     let hari = d.getDate().toString()
     
-    console.log(hari)
-
+    // delete if date 7/17/27
     if(hari.indexOf("7") != -1){
         removeAllData()
     }
@@ -137,15 +137,17 @@ $(document).ready(function(){
 
     allData();
 
-    $(document).ready( function () {
-        $('#customers').DataTable({
-            
-            "columnDefs": [
-                { "type": "html-num", "targets": 0 }
-            ],
-            order: [[0, 'desc']]
-        });
-    } );
+
+$(document).ready( function () {
+    // dataTable
+    $('#customers').DataTable({
+        
+        "columnDefs": [
+            { "type": "html-num", "targets": 0 }
+        ],
+        order: [[0, 'desc']]
+    });
+} );
 
     
 

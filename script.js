@@ -90,6 +90,7 @@ function save(){
 }
 
 function removeAllData(){
+    // Clear localStorage
     localStorage.clear();
     allData()
 }
@@ -97,6 +98,7 @@ function removeAllData(){
 function find(id){
     customersList = JSON.parse(localStorage.getItem('listItem')) ?? []
 
+    // show data to form
     customersList.forEach(function (value){
         if(value.id == id){
             document.getElementById('id').value            = value.id
